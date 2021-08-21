@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Twitter Clone Client
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was built with [React.js](https://reactjs.org/) using Typescript and Apollo Client for fetching data from a graphql API and Sementic UI react for the UI
 
 ## Available Scripts
 
@@ -39,8 +39,8 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## Graphql API or Server
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+You can find the api here on Github here at this link [Twitter-clone-server](https://github.com/Irere123/twitter-clone-server).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
