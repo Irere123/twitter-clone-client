@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 function Navbar() {
   return (
     <Menu pointing secondary size="massive" color="teal">
+      <Menu.Item name="twitter" color="teal" className="logo" />
       <Menu.Item as={Link} name="home" to="/" />
       <Menu.Menu position="right">
         <Menu.Item as={Link} color="teal" name="login" to="/login" />

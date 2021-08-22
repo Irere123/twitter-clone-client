@@ -35,7 +35,7 @@ const RecentCard: React.FC<Props> = ({ user }) => {
               <Feed.Content>
                 <Feed.Date content={dayjs(tweet.createdAt).fromNow()} />
                 <Feed.Summary>
-                  <Link to={`/tweet/${tweet.id}`}>
+                  <Link to={`/twt/${tweet.id}`}>
                     {tweet.body.slice(0, 100)}
                   </Link>
                 </Feed.Summary>

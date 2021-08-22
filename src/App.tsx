@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Container } from "semantic-ui-react";
+
+import "./App.css";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -14,7 +16,7 @@ function App() {
         <Container>
           <Navbar />
           <Route exact component={Home} path="/" />
-          <Route exact component={TweetDetail} path="/tweet/:tweetId" />
+          <Route exact component={TweetDetail} path="/twt/:tweetId" />
           <Route exact component={Profile} path="/user/:userId" />
           <Route exact component={Login} path="/login" />
           <Route exact component={Register} path="/register" />

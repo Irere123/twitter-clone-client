@@ -1,10 +1,9 @@
 import React from "react";
 import { RouteComponentProps } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
-import { Button, Card, Grid, Header, Segment } from "semantic-ui-react";
+import { Card, Grid } from "semantic-ui-react";
 
 import { GET_USER_QUERY } from "../graphql/user/query/user";
-import src from "../images/matthew.png";
 import RecentCard from "../components/profile/RecentCard";
 import AboutUserCard from "../components/profile/AboutUserCard";
 

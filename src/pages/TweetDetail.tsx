@@ -2,6 +2,7 @@ import React from "react";
 import { RouteComponentProps } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { GET_TWEET_QUERY } from "../graphql/tweets/query/tweets";
+import TweetCard from "../components/tweet-detail/TweetCard";
 
 interface Props extends RouteComponentProps {}
 
@@ -15,12 +16,9 @@ const TweetDetail: React.FC<Props> = ({ match: { params } }: any) => {
   }
 
   const tweet = data.getTweet;
+  console.log(data);
 
-  return (
-    <div>
-      <h1>{tweet.body}</h1>
-    </div>
-  );
+  return <TweetCard tweet={tweet} />;
 };
 
 export default TweetDetail;

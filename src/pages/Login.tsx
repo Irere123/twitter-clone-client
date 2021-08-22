@@ -29,6 +29,7 @@ const Login: React.FC = () => {
             name="password"
             label="Password"
             placeholder="Password"
+            type="password"
             component={InputField}
           />
           <Button color="green">Login</Button>

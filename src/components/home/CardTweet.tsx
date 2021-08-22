@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import React from "react";
-import { Feed, Icon } from "semantic-ui-react";
+import { Feed } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 import Image from "../../images/christian.jpg";
@@ -21,13 +21,9 @@ const CardTweet: React.FC<Props> = ({ tweet }) => {
             <Feed.Date>{dayjs(tweet.createdAt).fromNow()}</Feed.Date>
           </Feed.Summary>
           <Feed.Extra text>
-            <Link to={`/tweet/${tweet.id}`}>{tweet.body}</Link>
+            <a href={`/twt/${tweet.id}`}>{tweet.body}</a>
           </Feed.Extra>
-          <Feed.Meta>
-            <Feed.Like>
-              <Icon name="like" />5 Likes
-            </Feed.Like>
-          </Feed.Meta>
+          <Feed.Meta></Feed.Meta>
         </Feed.Content>
       </Feed.Event>
     </Feed>

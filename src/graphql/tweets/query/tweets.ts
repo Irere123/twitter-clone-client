@@ -21,6 +21,7 @@ export const GET_TWEET_QUERY = gql`
       id
       body
       user {
+        firstName
         displayName
         lastName
       }
