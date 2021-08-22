@@ -1,23 +1,12 @@
-import { gql, useQuery } from "@apollo/client";
-import { Card } from "semantic-ui-react";
+import React from "react";
+import { useQuery } from "@apollo/client";
+import { Grid, Segment, Header } from "semantic-ui-react";
+
 import CardTweet from "../components/home/CardTweet";
+import { ALL_TWEETS_QUERY } from "../graphql/tweets/query/tweets";
 
-const ALL_USERS_QUERY = gql`
-  query {
-    allTweets {
-      id
-      body
-      user {
-        displayName
-        lastName
-      }
-      createdAt
-    }
-  }
-`;
-
-function Home() {
-  const { data, error, loading } = useQuery(ALL_USERS_QUERY);
+const Home: React.FC = () => {
+  const { data, error, loading } = useQuery(ALL_TWEETS_QUERY);
 
   if (loading) {
     return <h1>Loading.....</h1>;
@@ -29,13 +18,26 @@ function Home() {
   }
   return (
     <>
-      <Card.Group itemsPerRow={3}>
-        {data.allTweets.map((tweet: any) => (
-          <CardTweet key={`tweet-${tweet.id}`} tweet={tweet} />
-        ))}
-      </Card.Group>
+      <Header as="h2" color="teal">
+        News Feed
+      </Header>
+
+      <Grid>
+        <Grid.Row>
+          <Grid.Column width={4}>
+            <Segment inverted color="teal"></Segment>
+          </Grid.Column>
+          <Grid.Column width={10}>
+            {data.allTweets.map((tweet: any) => (
+              <Segment>
+                <CardTweet tweet={tweet} />
+              </Segment>
+            ))}
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     </>
   );
-}
+};
 
 export default Home;

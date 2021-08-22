@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import TweetDetail from "./pages/TweetDetail";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Container>
           <Navbar />
           <Route exact component={Home} path="/" />
+          <Route exact component={TweetDetail} path="/tweet/:tweetId" />
           <Route exact component={Login} path="/login" />
           <Route exact component={Register} path="/register" />
         </Container>
