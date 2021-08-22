@@ -1,19 +1,23 @@
-import { Feed, Icon, Popup } from "semantic-ui-react";
-import { Link } from "react-router-dom";
 import dayjs from "dayjs";
+import React from "react";
+import { Feed, Icon } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+
+import Image from "../../images/christian.jpg";
 
 interface Props {
   tweet: any;
 }
 
-function CardTweet({ tweet }: Props) {
+const CardTweet: React.FC<Props> = ({ tweet }) => {
   return (
     <Feed>
       <Feed.Event>
-        <Feed.Label image="https://react.semantic-ui.com//images/avatar/small/joe.jpg" />
+        <Feed.Label image={Image} />
         <Feed.Content>
           <Feed.Summary>
-            {tweet.user.displayName} posted on his page
+            <Link to={`/user/${tweet.user.id}`}>{tweet.user.displayName}</Link>{" "}
+            posted on his page
             <Feed.Date>{dayjs(tweet.createdAt).fromNow()}</Feed.Date>
           </Feed.Summary>
           <Feed.Extra text>
@@ -28,6 +32,6 @@ function CardTweet({ tweet }: Props) {
       </Feed.Event>
     </Feed>
   );
-}
+};
 
 export default CardTweet;

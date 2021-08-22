@@ -1,3 +1,4 @@
+import React from "react";
 import { Button, Container, Form, Header } from "semantic-ui-react";
 import { Field, Formik } from "formik";
 import InputField from "../components/formik-fields/InputField";
@@ -7,7 +8,7 @@ interface FormValues {
   password: string;
 }
 
-function Login() {
+const Login: React.FC = () => {
   return (
     <Container text>
       <Header as="h2" color="teal">
@@ -35,6 +36,6 @@ function Login() {
       </Formik>
     </Container>
   );
-}
+};
 
 export default Login;

@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import gql from "graphql-tag";
 
 export const ALL_TWEETS_QUERY = gql`
   query {
@@ -6,6 +6,7 @@ export const ALL_TWEETS_QUERY = gql`
       id
       body
       user {
+        id
         displayName
         lastName
       }
@@ -23,6 +24,16 @@ export const GET_TWEET_QUERY = gql`
         displayName
         lastName
       }
+      createdAt
+    }
+  }
+`;
+
+export const GET_USER_LASTEST = gql`
+  query ($userId: ID!) {
+    lastestTweets(userId: $userId) {
+      id
+      body
       createdAt
     }
   }

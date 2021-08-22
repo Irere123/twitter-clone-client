@@ -1,9 +1,10 @@
 import React from "react";
-import { useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/react-hooks";
 import { Grid, Segment, Header } from "semantic-ui-react";
 
 import CardTweet from "../components/home/CardTweet";
 import { ALL_TWEETS_QUERY } from "../graphql/tweets/query/tweets";
+import UserCard from "../components/home/UserCard";
 
 const Home: React.FC = () => {
   const { data, error, loading } = useQuery(ALL_TWEETS_QUERY);
@@ -25,7 +26,7 @@ const Home: React.FC = () => {
       <Grid>
         <Grid.Row>
           <Grid.Column width={4}>
-            <Segment inverted color="teal"></Segment>
+            <UserCard />
           </Grid.Column>
           <Grid.Column width={10}>
             {data.allTweets.map((tweet: any) => (

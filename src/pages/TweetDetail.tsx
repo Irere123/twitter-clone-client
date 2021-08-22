@@ -1,6 +1,6 @@
 import React from "react";
 import { RouteComponentProps } from "react-router-dom";
-import { useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/react-hooks";
 import { GET_TWEET_QUERY } from "../graphql/tweets/query/tweets";
 
 interface Props extends RouteComponentProps {}
