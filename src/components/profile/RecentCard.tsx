@@ -27,23 +27,31 @@ const RecentCard: React.FC<Props> = ({ user }) => {
       <Card.Content>
         <Card.Header>Recent Tweets</Card.Header>
       </Card.Content>
-      <Card.Content>
-        {tweets.map((tweet: any) => (
-          <Feed key={tweet.id}>
-            <Feed.Event>
-              <Feed.Label image={image} />
-              <Feed.Content>
-                <Feed.Date content={dayjs(tweet.createdAt).fromNow()} />
-                <Feed.Summary>
-                  <Link to={`/twt/${tweet.id}`}>
-                    {tweet.body.slice(0, 100)}
-                  </Link>
-                </Feed.Summary>
-              </Feed.Content>
-            </Feed.Event>
-          </Feed>
-        ))}
-      </Card.Content>
+      {tweets.length ? (
+        <Card.Content>
+          {tweets.map((tweet: any) => (
+            <Feed key={tweet.id}>
+              <Feed.Event>
+                <Feed.Label image={image} />
+                <Feed.Content>
+                  <Feed.Date content={dayjs(tweet.createdAt).fromNow()} />
+                  <Feed.Summary>
+                    <Link to={`/twt/${tweet.id}`}>
+                      {tweet.body.slice(0, 100)}
+                    </Link>
+                  </Feed.Summary>
+                </Feed.Content>
+              </Feed.Event>
+            </Feed>
+          ))}
+        </Card.Content>
+      ) : (
+        <Card.Content>
+          <Card.Description>
+            {user.displayName} has no latest posts yet
+          </Card.Description>
+        </Card.Content>
+      )}
     </>
   );
 };
