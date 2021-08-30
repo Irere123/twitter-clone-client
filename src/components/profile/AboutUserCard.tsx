@@ -16,7 +16,7 @@ const AboutUserCard: React.FC<Props> = ({ user }) => {
         <Grid.Column width="11">
           <Grid.Row>
             <Header as="h1" color="teal">
-              {user.firstName}
+              {user.username}
             </Header>
             <Header as="h4" color="teal">
               @{user.displayName}

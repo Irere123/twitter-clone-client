@@ -8,7 +8,7 @@ export const ALL_TWEETS_QUERY = gql`
       user {
         id
         displayName
-        lastName
+        username
       }
       createdAt
     }
@@ -21,9 +21,8 @@ export const GET_TWEET_QUERY = gql`
       id
       body
       user {
-        firstName
+        username
         displayName
-        lastName
       }
       createdAt
     }

@@ -7,8 +7,7 @@ export const ALL_COMMENTS_QUERY = gql`
       body
       user {
         id
-        firstName
-        lastName
+        username
         displayName
       }
       createdAt

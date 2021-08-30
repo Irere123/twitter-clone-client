@@ -4,8 +4,7 @@ export const GET_USER_QUERY = gql`
   query ($userId: ID!) {
     getUser(userId: $userId) {
       id
-      firstName
-      lastName
+      username
       displayName
       createdAt
     }

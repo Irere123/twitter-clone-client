@@ -16,7 +16,7 @@ const CardTweet: React.FC<Props> = ({ tweet }) => {
         <Feed.Label image={Image} />
         <Feed.Content>
           <Feed.Summary>
-            <Link to={`/user/${tweet.user.id}`}>{tweet.user.displayName}</Link>{" "}
+            <Link to={`/user/${tweet.user.id}`}>{tweet.user.username}</Link>{" "}
             posted on his page
             <Feed.Date>{dayjs(tweet.createdAt).fromNow()}</Feed.Date>
           </Feed.Summary>

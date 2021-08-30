@@ -17,7 +17,7 @@ const TweetCard: React.FC<Props> = ({ tweet }) => {
         <Header as="h3">Posted by</Header>
         <Card
           image={Image}
-          header={tweet.user.firstName}
+          header={tweet.user.username}
           meta={`@${tweet.user.displayName}`}
         />
       </Grid.Column>
