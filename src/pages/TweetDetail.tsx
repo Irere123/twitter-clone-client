@@ -4,9 +4,9 @@ import { useQuery } from "@apollo/react-hooks";
 import { GET_TWEET_QUERY } from "../graphql/tweets/query/tweets";
 import TweetCard from "../components/tweet-detail/TweetCard";
 
-interface Props extends RouteComponentProps {}
+interface Props extends RouteComponentProps<{ tweetId: string }> {}
 
-const TweetDetail: React.FC<Props> = ({ match: { params } }: any) => {
+const TweetDetail: React.FC<Props> = ({ match: { params } }) => {
   const { data, loading } = useQuery(GET_TWEET_QUERY, {
     variables: { tweetId: params.tweetId },
   });

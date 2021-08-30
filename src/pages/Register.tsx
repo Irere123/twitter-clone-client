@@ -8,6 +8,7 @@ import { registerMutation } from "../graphql/user/mutation/register";
 interface Props extends RouteComponentProps {}
 
 const Register: React.FC<Props> = ({ history }) => {
+  const [errors, setErrors] = useState({});
   const [values, setValues] = useState({
     username: "",
     password: "",
@@ -18,13 +19,17 @@ const Register: React.FC<Props> = ({ history }) => {
   };
 
   const [addUser, { loading }] = useMutation(registerMutation, {
+    onError(err) {
+      setErrors(err.graphQLErrors[0]);
+      console.log(errors);
+    },
     variables: { input: values },
   });
 
   const onSubmit = (e: any) => {
     e.preventDefault();
-    history.push("/login");
     addUser();
+    // history.push("/login");
   };
 
   return (
@@ -33,9 +38,8 @@ const Register: React.FC<Props> = ({ history }) => {
         Create a new account
       </Header>
 
-      <Form onSubmit={onSubmit}>
+      <Form onSubmit={onSubmit} className={loading ? "loading" : ""}>
         <Form.Field>
-        
           <Form.Input
             value={values.username}
             onChange={onChange}

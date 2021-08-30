@@ -7,9 +7,9 @@ import { GET_USER_QUERY } from "../graphql/user/query/user";
 import RecentCard from "../components/profile/RecentCard";
 import AboutUserCard from "../components/profile/AboutUserCard";
 
-interface Props extends RouteComponentProps {}
+interface Props extends RouteComponentProps<{ userId: string }> {}
 
-const Profile: React.FC<Props> = ({ match: { params } }: any) => {
+const Profile: React.FC<Props> = ({ match: { params } }) => {
   const { data, loading } = useQuery(GET_USER_QUERY, {
     variables: { userId: params.userId },
   });
