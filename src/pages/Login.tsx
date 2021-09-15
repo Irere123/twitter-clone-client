@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Container, Form, Header } from "semantic-ui-react";
 import { Field, Formik } from "formik";
-import InputField from "../components/formik-fields/InputField";
+import InputField from "../components/fields/InputField";
 
 interface FormValues {
   username: string;

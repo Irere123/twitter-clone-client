@@ -16,3 +16,19 @@ mutation Register($input: RegisterInput!) {
     }
   }
 }
+
+mutation Login($input: LoginInput!) {
+  login(input: $input) {
+    user {
+      id
+      username
+      bio
+      displayName
+      createdAt
+    }
+    errors {
+      path
+      message
+    }
+  }
+}

@@ -1,10 +1,11 @@
 import React from "react";
 import { RouteComponentProps } from "react-router-dom";
 import { Button, Container, Form, Header } from "semantic-ui-react";
-import { Formik } from "formik";
+import { Field, Formik } from "formik";
 
 import { RegisterComponent } from "../generated/graphql";
 import { FormValues } from "../utils/types";
+import InputField from "../components/fields/InputField";
 
 interface Props extends RouteComponentProps {}
 
@@ -29,25 +30,24 @@ const Register: React.FC<Props> = ({ history }) => {
           >
             {({ handleChange, handleSubmit, values, isSubmitting }) => (
               <Form onSubmit={handleSubmit}>
-                <Form.Field>
-                  <Form.Input
-                    value={values.username}
-                    onChange={handleChange}
-                    name="username"
-                    fluid
-                    placeholder="Username"
-                    label="Username"
-                  />
-                  <Form.Input
-                    value={values.password}
-                    onChange={handleChange}
-                    name="password"
-                    fluid
-                    placeholder="Password"
-                    label="Password"
-                    type="password"
-                  />
-                </Form.Field>
+                <Field
+                  value={values.username}
+                  onChange={handleChange}
+                  name="username"
+                  fluid
+                  placeholder="Username"
+                  component={InputField}
+                />
+                <Field
+                  value={values.password}
+                  onChange={handleChange}
+                  name="password"
+                  fluid
+                  placeholder="Password"
+                  type="password"
+                  component={InputField}
+                />
+
                 <Button disabled={isSubmitting} type="submit" color="green">
                   Create account
                 </Button>
