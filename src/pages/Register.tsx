@@ -19,14 +19,22 @@ const Register: React.FC<Props> = ({ history }) => {
         {(mutate) => (
           <Formik<FormValues>
             initialValues={{ username: "", password: "" }}
-            onSubmit={async ({ password, username }) => {
+            onSubmit={async (input, { setErrors }) => {
               const response = await mutate({
-                variables: { input: { password, username } },
+                variables: { input },
               });
 
-              console.log(response);
+              if (response && response.data && !response.data.register) {
+                setErrors({
+                  username: "username already taken",
+                });
+                return;
+              }
+
               history.push("/login");
             }}
+            validateOnBlur={false}
+            validateOnChange={false}
           >
             {({ handleChange, handleSubmit, values, isSubmitting }) => (
               <Form onSubmit={handleSubmit}>
