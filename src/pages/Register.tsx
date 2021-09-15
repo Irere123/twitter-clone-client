@@ -1,62 +1,61 @@
 import React from "react";
-import { useState } from "react";
 import { RouteComponentProps } from "react-router-dom";
 import { Button, Container, Form, Header } from "semantic-ui-react";
-import { useRegisterMutation } from "../generated/graphql";
+import { Formik } from "formik";
+
+import { RegisterComponent } from "../generated/graphql";
+import { FormValues } from "../utils/types";
 
 interface Props extends RouteComponentProps {}
 
 const Register: React.FC<Props> = ({ history }) => {
-  const [values, setValues] = useState({
-    username: "",
-    password: "",
-  });
-
-  const onChange = (e: any) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-  };
-
-  const [addUser, { loading }] = useRegisterMutation({
-    variables: {
-      input: { password: values.password, username: values.username },
-    },
-  });
-  const onSubmit = (e: any) => {
-    e.preventDefault();
-    addUser();
-    // history.push("/login");
-  };
-
   return (
     <Container text>
       <Header as="h2" color="teal">
         Create a new account
       </Header>
+      <RegisterComponent>
+        {(mutate) => (
+          <Formik<FormValues>
+            initialValues={{ username: "", password: "" }}
+            onSubmit={async ({ password, username }) => {
+              const response = await mutate({
+                variables: { input: { password, username } },
+              });
 
-      <Form onSubmit={onSubmit} className={loading ? "loading" : ""}>
-        <Form.Field>
-          <Form.Input
-            value={values.username}
-            onChange={onChange}
-            name="username"
-            fluid
-            placeholder="Username"
-            label="Username"
-          />
-          <Form.Input
-            value={values.password}
-            onChange={onChange}
-            name="password"
-            fluid
-            placeholder="Password"
-            label="Password"
-            type="password"
-          />
-        </Form.Field>
-        <Button type="submit" color="green">
-          Create account
-        </Button>
-      </Form>
+              console.log(response);
+              history.push("/login");
+            }}
+          >
+            {({ handleChange, handleSubmit, values, isSubmitting }) => (
+              <Form onSubmit={handleSubmit}>
+                <Form.Field>
+                  <Form.Input
+                    value={values.username}
+                    onChange={handleChange}
+                    name="username"
+                    fluid
+                    placeholder="Username"
+                    label="Username"
+                  />
+                  <Form.Input
+                    value={values.password}
+                    onChange={handleChange}
+                    name="password"
+                    fluid
+                    placeholder="Password"
+                    label="Password"
+                    type="password"
+                  />
+                </Form.Field>
+                <Button disabled={isSubmitting} type="submit" color="green">
+                  Create account
+                </Button>
+              </Form>
+            )}
+          </Formik>
+        )}
+      </RegisterComponent>
     </Container>
   );
 };

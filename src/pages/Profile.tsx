@@ -18,7 +18,7 @@ const Profile: React.FC<Props> = ({ match: { params } }) => {
     return <h1>Loading...</h1>;
   }
 
-  const user = data?.getUser;
+  const user = data?.getUser!;
   return (
     <Grid>
       <Grid.Column width={4}>

@@ -1,9 +1,11 @@
 import React from "react";
 import { Button, Card, Grid, Header, Segment } from "semantic-ui-react";
+
+import { User } from "../../generated/graphql";
 import image from "../../images/matthew.png";
 
 interface Props {
-  user: any;
+  user: User;
 }
 
 const AboutUserCard: React.FC<Props> = ({ user }) => {

@@ -1,9 +1,8 @@
 import React from "react";
-import { useQuery } from "@apollo/react-hooks";
-// import { ALL_COMMENTS_QUERY } from "../../graphql/tweets/comments/comments";
 import { Feed, Header, Segment } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
+import { useAllCommentsQuery } from "../../generated/graphql";
 
 interface Props {
   tweet: any;
@@ -11,18 +10,18 @@ interface Props {
 }
 
 const Comments: React.FC<Props> = ({ tweet, image }) => {
-  // const { data, loading } = useQuery(ALL_COMMENTS_QUERY, {
-  //   variables: { tweetId: tweet.id },
-  // });
+  const { data, loading } = useAllCommentsQuery({
+    variables: { tweetId: tweet.id },
+  });
+  if (loading) {
+    return null;
+  }
 
-  // if (loading) {
-  //   return null;
-  // }
+  const comments = data?.allComments!;
 
-  // const comments = data.allComments;
   return (
     <>
-      {/* {comments.length ? (
+      {comments.length ? (
         <Segment>
           <Header as="h3">Comments</Header>
           <Feed>
@@ -43,7 +42,7 @@ const Comments: React.FC<Props> = ({ tweet, image }) => {
             ))}
           </Feed>
         </Segment>
-      ) : null} */}
+      ) : null}
     </>
   );
 };

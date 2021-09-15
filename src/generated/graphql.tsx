@@ -203,7 +203,7 @@ export type GetTweetQueryVariables = Exact<{
 }>;
 
 
-export type GetTweetQuery = { __typename?: 'Query', getTweet: { __typename?: 'Tweet', id: string, body: string, createdAt: string, user: { __typename?: 'User', username: string, displayName: string } } };
+export type GetTweetQuery = { __typename?: 'Query', getTweet: { __typename?: 'Tweet', id: string, body: string, createdAt: string, user: { __typename?: 'User', id: string, username: string, displayName: string } } };
 
 export type GetUserQueryVariables = Exact<{
   userId: Scalars['ID'];
@@ -364,6 +364,7 @@ export const GetTweetDocument = gql`
     id
     body
     user {
+      id
       username
       displayName
     }

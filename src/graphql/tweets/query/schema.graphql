@@ -24,6 +24,7 @@ query GetTweet($tweetId: ID!) {
     id
     body
     user {
+      id
       username
       displayName
     }

@@ -4,9 +4,10 @@ import { Feed } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 import Image from "../../images/christian.jpg";
+import { Tweet } from "../../generated/graphql";
 
 interface Props {
-  tweet: any;
+  tweet: Tweet;
 }
 
 const CardTweet: React.FC<Props> = ({ tweet }) => {

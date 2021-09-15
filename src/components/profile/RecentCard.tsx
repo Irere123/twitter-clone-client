@@ -1,33 +1,32 @@
 import React from "react";
 import { Card, Feed } from "semantic-ui-react";
-import { useQuery } from "@apollo/client";
 import dayjs from "dayjs";
 
 import image from "../../images/matthew.png";
-// import { GET_USER_LASTEST } from "../../graphql/tweets/query/tweets";
 import { Link } from "react-router-dom";
+import { useLatestTweetsQuery, User } from "../../generated/graphql";
 
 interface Props {
-  user: any;
+  user: User;
 }
 
 const RecentCard: React.FC<Props> = ({ user }) => {
-  // const { data, loading } = useQuery(GET_USER_LASTEST, {
-  //   variables: { userId: user.id },
-  // });
+  const { data, loading } = useLatestTweetsQuery({
+    variables: { userId: user.id },
+  });
 
-  // if (loading) {
-  //   return null;
-  // }
+  if (loading) {
+    return null;
+  }
 
-  // const tweets = data.lastestTweets;
+  const tweets = data?.lastestTweets!;
 
   return (
     <>
       <Card.Content>
         <Card.Header>Recent Tweets</Card.Header>
       </Card.Content>
-      {/* {tweets.length ? (
+      {tweets.length ? (
         <Card.Content>
           {tweets.map((tweet: any) => (
             <Feed key={tweet.id}>
@@ -51,7 +50,7 @@ const RecentCard: React.FC<Props> = ({ user }) => {
             {user.displayName} has no latest posts yet
           </Card.Description>
         </Card.Content>
-      )} */}
+      )}
     </>
   );
 };
