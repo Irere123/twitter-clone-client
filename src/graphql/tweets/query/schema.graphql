@@ -1,0 +1,32 @@
+query AllTweets {
+  allTweets {
+    id
+    body
+    user {
+      id
+      displayName
+      username
+    }
+    createdAt
+  }
+}
+
+query LatestTweets($userId: ID!) {
+  lastestTweets(userId: $userId) {
+    id
+    body
+    createdAt
+  }
+}
+
+query GetTweet($tweetId: ID!) {
+  getTweet(tweetId: $tweetId) {
+    id
+    body
+    user {
+      username
+      displayName
+    }
+    createdAt
+  }
+}

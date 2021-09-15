@@ -1,14 +1,12 @@
-import { useMutation } from "@apollo/react-hooks";
 import React from "react";
 import { useState } from "react";
 import { RouteComponentProps } from "react-router-dom";
 import { Button, Container, Form, Header } from "semantic-ui-react";
-import { registerMutation } from "../graphql/user/mutation/register";
+import { useRegisterMutation } from "../generated/graphql";
 
 interface Props extends RouteComponentProps {}
 
 const Register: React.FC<Props> = ({ history }) => {
-  const [errors, setErrors] = useState({});
   const [values, setValues] = useState({
     username: "",
     password: "",
@@ -18,14 +16,11 @@ const Register: React.FC<Props> = ({ history }) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
-  const [addUser, { loading }] = useMutation(registerMutation, {
-    onError(err) {
-      setErrors(err.graphQLErrors[0]);
-      console.log(errors);
+  const [addUser, { loading }] = useRegisterMutation({
+    variables: {
+      input: { password: values.password, username: values.username },
     },
-    variables: { input: values },
   });
-
   const onSubmit = (e: any) => {
     e.preventDefault();
     addUser();

@@ -1,0 +1,18 @@
+query GetUser($userId: ID!) {
+  getUser(userId: $userId) {
+    id
+    username
+    displayName
+    createdAt
+  }
+}
+
+mutation Register($input: RegisterInput!) {
+  register(input: $input) {
+    ok
+    errors {
+      path
+      message
+    }
+  }
+}

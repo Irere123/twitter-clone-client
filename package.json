@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.4.11",
     "@apollo/react-hooks": "^4.0.0",
     "@types/graphql": "^14.5.0",
     "@types/lodash": "^4.14.172",
@@ -26,6 +27,7 @@
     "typescript": "^4.3.5"
   },
   "scripts": {
+    "gen": "graphql-codegen --config codegen.yml",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -50,6 +52,10 @@
     ]
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^2.2.0",
+    "@graphql-codegen/typescript": "^2.2.2",
+    "@graphql-codegen/typescript-operations": "^2.1.4",
+    "@graphql-codegen/typescript-react-apollo": "^3.1.4",
     "@types/react": "^17.0.19",
     "@types/react-dom": "^17.0.9",
     "@types/react-router-dom": "^5.1.8"

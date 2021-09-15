@@ -1,0 +1,12 @@
+query AllComments($tweetId: ID!) {
+  allComments(tweetId: $tweetId) {
+    id
+    body
+    user {
+      id
+      username
+      displayName
+    }
+    createdAt
+  }
+}

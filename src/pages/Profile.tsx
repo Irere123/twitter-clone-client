@@ -1,16 +1,16 @@
 import React from "react";
 import { RouteComponentProps } from "react-router-dom";
-import { useQuery } from "@apollo/react-hooks";
+
 import { Card, Grid } from "semantic-ui-react";
 
-import { GET_USER_QUERY } from "../graphql/user/query/user";
 import RecentCard from "../components/profile/RecentCard";
 import AboutUserCard from "../components/profile/AboutUserCard";
+import { useGetUserQuery } from "../generated/graphql";
 
 interface Props extends RouteComponentProps<{ userId: string }> {}
 
 const Profile: React.FC<Props> = ({ match: { params } }) => {
-  const { data, loading } = useQuery(GET_USER_QUERY, {
+  const { data, loading } = useGetUserQuery({
     variables: { userId: params.userId },
   });
 
@@ -18,7 +18,7 @@ const Profile: React.FC<Props> = ({ match: { params } }) => {
     return <h1>Loading...</h1>;
   }
 
-  const user = data.getUser;
+  const user = data?.getUser;
   return (
     <Grid>
       <Grid.Column width={4}>
